@@ -1,0 +1,10 @@
+{
+  "US": {
+    "mobile": "https://example.com/us-mobile",
+    "desktop": "https://example.com/us-desktop"
+  },
+  "RU": {
+    "default": "https://example.ru"
+  },
+  "default": "https://example.net"
+}
