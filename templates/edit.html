@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Редактирование кампании</h2>
+<form method="post" action="{{ url_for('edit_campaign', cid=campaign.id) }}" class="row g-3">
+  <div class="col-md-4">
+    <input type="text" class="form-control" name="name" value="{{ campaign.name }}" required>
+  </div>
+  <div class="col-md-2">
+    <input type="text" class="form-control" name="slug" value="{{ campaign.slug }}" placeholder="Слаг">
+  </div>
+  <div class="col-md-6">
+    <input type="url" class="form-control" name="url" value="{{ campaign.url }}" required>
+  </div>
+  <div class="col-md-6">
+    <textarea class="form-control" name="extra_urls" placeholder="Дополнительные URL (каждый с новой строки, можно через |вес)">{{ campaign.extra_urls }}</textarea>
+  </div>
+  <div class="col-md-6">
+    <input type="url" class="form-control" name="fallback_url" value="{{ campaign.fallback_url }}" placeholder="Резервный URL">
+  </div>
+  <div class="col-md-6">
+    <input type="text" class="form-control" name="countries" value="{{ campaign.countries }}" placeholder="Страны (например US,CA)">
+  </div>
+  <div class="col-md-3">
+    <select class="form-select" name="redirect_type">
+      <option value="302" {% if campaign.redirect_type == '302' %}selected{% endif %}>302</option>
+      <option value="meta" {% if campaign.redirect_type == 'meta' %}selected{% endif %}>Meta</option>
+      <option value="js" {% if campaign.redirect_type == 'js' %}selected{% endif %}>JS</option>
+      <option value="refresh" {% if campaign.redirect_type == 'refresh' %}selected{% endif %}>Refresh</option>
+      <option value="iframe" {% if campaign.redirect_type == 'iframe' %}selected{% endif %}>iFrame</option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <input type="number" class="form-control" name="delay" value="{{ campaign.delay }}" min="0">
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary ms-2">Назад</a>
+  </div>
+</form>
+{% endblock %}
