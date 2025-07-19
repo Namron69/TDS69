@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Переход...</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    {% if redirect_type == 'meta' %}
+    <meta http-equiv="refresh" content="{{ delay }};url={{ url }}">
+    {% elif redirect_type == 'js' %}
+    <script>
+        setTimeout(function(){ window.location.replace("{{ url }}"); }, {{ delay * 1000 }});
+    </script>
+    {% endif %}
+</head>
+<body>
+    <p class="text-center mt-5">Переходим...</p>
+    <noscript>
+        <meta http-equiv="refresh" content="0;url={{ url }}">
+    </noscript>
+</body>
+</html>

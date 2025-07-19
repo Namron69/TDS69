@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Статистика для {{ campaign.name }}</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Время</th>
+      <th>IP</th>
+      <th>Страна</th>
+      <th>User-Agent</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for click in clicks %}
+    <tr>
+      <td>{{ click.timestamp }}</td>
+      <td>{{ click.ip }}</td>
+      <td>{{ click.country }}</td>
+      <td>{{ click.ua }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a href="{{ url_for('index') }}" class="btn btn-secondary">Назад</a>
+{% endblock %}
