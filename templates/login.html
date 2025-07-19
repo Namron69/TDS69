@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-4">
+    <h2>Вход</h2>
+    <form method="post">
+      <div class="mb-3">
+        <input type="text" class="form-control" name="username" placeholder="Логин" required>
+      </div>
+      <div class="mb-3">
+        <input type="password" class="form-control" name="password" placeholder="Пароль" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Войти</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
